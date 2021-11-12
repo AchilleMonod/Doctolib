@@ -9,6 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import sopra.doctolib.config.AppConfig;
 import sopra.doctolib.model.Adresse;
 import sopra.doctolib.model.Civilite;
+import sopra.doctolib.model.Lieu;
 import sopra.doctolib.model.Patient;
 import sopra.doctolib.model.Praticien;
 import sopra.doctolib.model.Specialite;
@@ -70,21 +71,7 @@ public class Main {
 		michelUser.setMotDePasse("jadoreDaniel");
 		michelUser.setType(Type.PATIENT);
 		michelUser.setPatients(patientsMich);
-		
-		Adresse adrPhilippe1 = new Adresse();
-
-		adrPhilippe1.setVoie("5 avenue du grand rond");
-		adrPhilippe1.setComplement("Résidence Jevousoigne");
-		adrPhilippe1.setCodePostal("Un milliard");
-		adrPhilippe1.setVille("Medicatown");
-		
-		Adresse adrPhilippe2 = new Adresse();
-
-		adrPhilippe2.setVoie("15 rue des poules");
-		adrPhilippe2.setComplement("Hopital Iban");
-		adrPhilippe2.setCodePostal("78400");
-		adrPhilippe2.setVille("Pansement-City");
-		
+			
 		Specialite coloscopeur = new Specialite();
 		coloscopeur.setNom("coloscopeur");
 		
@@ -93,16 +80,44 @@ public class Main {
 		
 		List<Specialite> spePhilippe = new ArrayList();
 		
-		
-		
 		Praticien philippe = new Praticien();
 		philippe.setCivilite(Civilite.M);
 		philippe.setNom("MEDECIN");
 		philippe.setPrenom("Philippe");
 		philippe.setTelephone("0612345678");
-		philippe.setEmail("michel.bilal@chibre.fr");
 		philippe.setDureeCreneau(15);
 		philippe.setSpecialites(spePhilippe);
+		
+		Utilisateur philippeUser = new Utilisateur();
+		philippeUser.setEmail("michel.bilal@bean.fr");
+		philippeUser.setMotDePasse("jadoreDaniel");
+		philippeUser.setType(Type.PATIENT);
+		philippeUser.setPraticien(philippe);
+		
+		Adresse adrPhilippe1 = new Adresse();
+
+		adrPhilippe1.setVoie("5 avenue du grand rond");
+		adrPhilippe1.setComplement("Résidence Jevousoigne");
+		adrPhilippe1.setCodePostale("Un milliard");
+		adrPhilippe1.setVille("Medicatown");
+		
+		Adresse adrPhilippe2 = new Adresse();
+
+		adrPhilippe2.setVoie("15 rue des poules");
+		adrPhilippe2.setComplement("Hopital Iban");
+		adrPhilippe2.setCodePostale("78400");
+		adrPhilippe2.setVille("Pansement-City");
+		
+		Lieu hopitalIban = new Lieu();
+		hopitalIban.setAdresse(adrPhilippe2);
+		hopitalIban.setNom("Hopital Iban");
+		hopitalIban.setPraticien(philippe);
+		
+		Lieu resJeVousSoigne = new Lieu();
+		hopitalIban.setAdresse(adrPhilippe1);
+		hopitalIban.setNom("Résidence Jevousoigne");
+		hopitalIban.setPraticien(philippe);
+		
 		
 		
 	}
