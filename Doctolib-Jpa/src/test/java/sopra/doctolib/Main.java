@@ -58,12 +58,15 @@ public class Main {
 		michel.setPrenom("Michel");
 		michel.setTelephone("0606060606");
 		
+		michel = patientRepo.save(michel);
 
 		Patient odil = new Patient();
 		odil.setCivilite(Civilite.MME);
 		odil.setNom("DERAIE");
 		odil.setPrenom("Odil");
 		odil.setTelephone("0612121212");
+		
+		odil = patientRepo.save(odil);
 		
 		List<Patient> patientsMich = new ArrayList<Patient>();
 		patientsMich.add(michel);
@@ -74,14 +77,20 @@ public class Main {
 		michelUser.setMotDePasse("jadoreDaniel");
 		michelUser.setType(Type.PATIENT);
 		michelUser.setPatients(patientsMich);
+		
+		michelUser = utilisateurRepo.save(michelUser);
 			
 		Specialite coloscopeur = new Specialite();
 		coloscopeur.setNom("coloscopeur");
 		
+		coloscopeur = specialiteRepo.save(coloscopeur);
+		
 		Specialite oncologue = new Specialite();
 		oncologue.setNom("oncologue");
 		
-		List<Specialite> spePhilippe = new ArrayList();
+		oncologue = specialiteRepo.save(oncologue);
+		
+		List<Specialite> spePhilippe = new ArrayList<Specialite>();
 		
 		Praticien philippe = new Praticien();
 		philippe.setCivilite(Civilite.M);
@@ -91,11 +100,15 @@ public class Main {
 		philippe.setDureeCreneau(15);
 		philippe.setSpecialites(spePhilippe);
 		
+		philippe = praticienRepo.save(philippe);
+		
 		Utilisateur philippeUser = new Utilisateur();
 		philippeUser.setEmail("michel.bilal@bean.fr");
 		philippeUser.setMotDePasse("jadoreDaniel");
 		philippeUser.setType(Type.PATIENT);
 		philippeUser.setPraticien(philippe);
+		
+		philippeUser = utilisateurRepo.save(philippeUser);
 		
 		Adresse adrPhilippe1 = new Adresse();
 
@@ -104,6 +117,8 @@ public class Main {
 		adrPhilippe1.setCodePostale("Un milliard");
 		adrPhilippe1.setVille("Medicatown");
 		
+		adrPhilippe1 = adresseRepo.save(adrPhilippe1);
+		
 		Adresse adrPhilippe2 = new Adresse();
 
 		adrPhilippe2.setVoie("15 rue des poules");
@@ -111,15 +126,21 @@ public class Main {
 		adrPhilippe2.setCodePostale("78400");
 		adrPhilippe2.setVille("Pansement-City");
 		
+		adrPhilippe2 = adresseRepo.save(adrPhilippe2);
+		
 		Lieu hopitalIban = new Lieu();
 		hopitalIban.setAdresse(adrPhilippe2);
 		hopitalIban.setNom("Hopital Iban");
 		hopitalIban.setPraticien(philippe);
 		
+		hopitalIban = lieuRepo.save(hopitalIban);
+		
 		Lieu resJeVousSoigne = new Lieu();
 		hopitalIban.setAdresse(adrPhilippe1);
 		hopitalIban.setNom("Résidence Jevousoigne");
 		hopitalIban.setPraticien(philippe);
+		
+		resJeVousSoigne = lieuRepo.save(resJeVousSoigne);
 		
 		Motif motif1 = new Motif();
 		motif1.setConsultations(null);
@@ -127,7 +148,7 @@ public class Main {
 		motif1.setNom("Cancer du cul");
 		motif1.setSpecialite(oncologue);
 		
-		
+		motif1 = motifRepo.save(motif1);
 		
 		
 		Creneau creneau = new Creneau();
@@ -137,6 +158,7 @@ public class Main {
 		creneau.setLieu(hopitalIban);
 		creneau.setPraticien(philippe);
 		
+		creneau = creneauRepo.save(creneau);
 
 		List<Creneau> creneaux = new ArrayList<Creneau>();
 		creneaux.add(creneau);
@@ -145,6 +167,8 @@ public class Main {
 		consult1.setCreneaux(creneaux);
 		consult1.setMotif(motif1);
 		consult1.setPatient(michel);
+		
+		consult1 = consultationRepo.save(consult1);
 		
 		List<Consultation> consultPhilippe = new ArrayList<Consultation>();
 		consultPhilippe.add(consult1);
