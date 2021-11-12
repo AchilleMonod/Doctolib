@@ -16,7 +16,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan("sopra.formation.repository.jpa")
+@ComponentScan("sopra.doctolib.repository")
 @EnableTransactionManagement
 public class AppConfig {
 

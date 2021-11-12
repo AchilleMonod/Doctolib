@@ -57,7 +57,6 @@ public class Main {
 		michel.setNom("BILAL");
 		michel.setPrenom("Michel");
 		michel.setTelephone("0606060606");
-		michel.setDtNaissance(sdf.parse("12/12/1980"));
 		
 
 		Patient odil = new Patient();
@@ -65,7 +64,6 @@ public class Main {
 		odil.setNom("DERAIE");
 		odil.setPrenom("Odil");
 		odil.setTelephone("0612121212");
-		odil.setDtNaissance(sdf.parse("01/04/1968"));
 		
 		List<Patient> patientsMich = new ArrayList<Patient>();
 		patientsMich.add(michel);
