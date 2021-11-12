@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 @Entity
-@Table(name="person")
+@Table(name="patient")
 public class Patient {
 	
 	@Id
@@ -32,7 +32,7 @@ public class Patient {
 	private LocalDate dtNaissance;
 	private String email;
 	private boolean principale;
-	@OneToMany(mappedBy ="personne")
+	@OneToMany(mappedBy ="patient")
 	private List<Consultation> consultations= new ArrayList<Consultation>();
 	@Embedded
 	private Adresse adresse;
