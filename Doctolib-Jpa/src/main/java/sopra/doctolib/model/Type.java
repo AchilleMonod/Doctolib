@@ -1,5 +1,5 @@
 package sopra.doctolib.model;
 
-public class Utilisateur {
+public enum Type {
 
 }
