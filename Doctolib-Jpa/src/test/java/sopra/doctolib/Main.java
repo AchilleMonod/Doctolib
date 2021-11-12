@@ -19,7 +19,6 @@ import sopra.doctolib.model.Praticien;
 import sopra.doctolib.model.Specialite;
 import sopra.doctolib.model.Type;
 import sopra.doctolib.model.Utilisateur;
-import sopra.doctolib.repository.IAdresse;
 import sopra.doctolib.repository.IConsultation;
 import sopra.doctolib.repository.ICreneau;
 import sopra.doctolib.repository.ILieu;
@@ -39,7 +38,6 @@ public class Main {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-		IAdresse adresseRepo = spring.getBean(IAdresse.class);
 		IConsultation consultationRepo = spring.getBean(IConsultation.class);
 		ICreneau creneauRepo = spring.getBean(ICreneau.class);
 		ILieu lieuRepo = spring.getBean(ILieu.class);
