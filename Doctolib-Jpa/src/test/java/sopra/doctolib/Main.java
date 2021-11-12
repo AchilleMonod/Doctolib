@@ -115,7 +115,6 @@ public class Main {
 		adrPhilippe1.setCodePostale("Un milliard");
 		adrPhilippe1.setVille("Medicatown");
 		
-		adrPhilippe1 = adresseRepo.save(adrPhilippe1);
 		
 		Adresse adrPhilippe2 = new Adresse();
 
@@ -124,7 +123,6 @@ public class Main {
 		adrPhilippe2.setCodePostale("78400");
 		adrPhilippe2.setVille("Pansement-City");
 		
-		adrPhilippe2 = adresseRepo.save(adrPhilippe2);
 		
 		Lieu hopitalIban = new Lieu();
 		hopitalIban.setAdresse(adrPhilippe2);
