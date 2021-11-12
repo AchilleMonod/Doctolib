@@ -30,15 +30,11 @@ private  boolean cheque;
 private  boolean espece;
 private  Integer dureeCreneau;
 @OneToMany(mappedBy = "praticien")
-private List<Lieu> lieu;
+private List<Lieu> lieux;
 @OneToMany(mappedBy = "praticien")
-private List<Specialite> specialite;
+private List<Specialite> specialites;
 @OneToMany(mappedBy = "praticien")
-private List<Creneau> creneau;
-
-private List<Specialite> specialites=new ArrayList<Specialite>();
-private List<Lieu> lieux=new ArrayList<Lieu>();
-
+private List<Creneau> creneaux;
 
 
 public Praticien() {
@@ -46,11 +42,12 @@ public Praticien() {
 }
 
 
-
-public Praticien(Long id, Civilite civilite, String nom, String prenom, String telephone, Secteur secteur,
-		boolean carteVitale, boolean cheque, boolean espece, Integer dureeCreneau, List<Specialite> specialites,
-		List<Lieu> lieux) {
+public Praticien(Long id, int version, Civilite civilite, String nom, String prenom, String telephone, Secteur secteur,
+		boolean carteVitale, boolean cheque, boolean espece, Integer dureeCreneau, List<Lieu> lieux,
+		List<Specialite> specialites, List<Creneau> creneaux) {
+	super();
 	this.id = id;
+	this.version = version;
 	this.civilite = civilite;
 	Nom = nom;
 	this.prenom = prenom;
@@ -60,10 +57,10 @@ public Praticien(Long id, Civilite civilite, String nom, String prenom, String t
 	this.cheque = cheque;
 	this.espece = espece;
 	this.dureeCreneau = dureeCreneau;
-	this.specialites = specialites;
 	this.lieux = lieux;
+	this.specialites = specialites;
+	this.creneaux = creneaux;
 }
-
 
 
 public Long getId() {
@@ -71,11 +68,19 @@ public Long getId() {
 }
 
 
-
 public void setId(Long id) {
 	this.id = id;
 }
 
+
+public int getVersion() {
+	return version;
+}
+
+
+public void setVersion(int version) {
+	this.version = version;
+}
 
 
 public Civilite getCivilite() {
@@ -83,11 +88,9 @@ public Civilite getCivilite() {
 }
 
 
-
 public void setCivilite(Civilite civilite) {
 	this.civilite = civilite;
 }
-
 
 
 public String getNom() {
@@ -95,11 +98,9 @@ public String getNom() {
 }
 
 
-
 public void setNom(String nom) {
 	Nom = nom;
 }
-
 
 
 public String getPrenom() {
@@ -107,11 +108,9 @@ public String getPrenom() {
 }
 
 
-
 public void setPrenom(String prenom) {
 	this.prenom = prenom;
 }
-
 
 
 public String getTelephone() {
@@ -119,11 +118,9 @@ public String getTelephone() {
 }
 
 
-
 public void setTelephone(String telephone) {
 	this.telephone = telephone;
 }
-
 
 
 public Secteur getSecteur() {
@@ -131,11 +128,9 @@ public Secteur getSecteur() {
 }
 
 
-
 public void setSecteur(Secteur secteur) {
 	this.secteur = secteur;
 }
-
 
 
 public boolean isCarteVitale() {
@@ -143,11 +138,9 @@ public boolean isCarteVitale() {
 }
 
 
-
 public void setCarteVitale(boolean carteVitale) {
 	this.carteVitale = carteVitale;
 }
-
 
 
 public boolean isCheque() {
@@ -155,11 +148,9 @@ public boolean isCheque() {
 }
 
 
-
 public void setCheque(boolean cheque) {
 	this.cheque = cheque;
 }
-
 
 
 public boolean isEspece() {
@@ -167,11 +158,9 @@ public boolean isEspece() {
 }
 
 
-
 public void setEspece(boolean espece) {
 	this.espece = espece;
 }
-
 
 
 public Integer getDureeCreneau() {
@@ -179,23 +168,9 @@ public Integer getDureeCreneau() {
 }
 
 
-
 public void setDureeCreneau(Integer dureeCreneau) {
 	this.dureeCreneau = dureeCreneau;
 }
-
-
-
-public List<Specialite> getSpecialites() {
-	return specialites;
-}
-
-
-
-public void setSpecialites(List<Specialite> specialites) {
-	this.specialites = specialites;
-}
-
 
 
 public List<Lieu> getLieux() {
@@ -203,20 +178,38 @@ public List<Lieu> getLieux() {
 }
 
 
-
 public void setLieux(List<Lieu> lieux) {
 	this.lieux = lieux;
 }
 
 
+public List<Specialite> getSpecialites() {
+	return specialites;
+}
+
+
+public void setSpecialites(List<Specialite> specialites) {
+	this.specialites = specialites;
+}
+
+
+public List<Creneau> getCreneaux() {
+	return creneaux;
+}
+
+
+public void setCreneaux(List<Creneau> creneaux) {
+	this.creneaux = creneaux;
+}
+
 
 @Override
 public String toString() {
-	return "Praticien [id=" + id + ", civilite=" + civilite + ", Nom=" + Nom + ", prenom=" + prenom + ", telephone="
-			+ telephone + ", secteur=" + secteur + ", carteVitale=" + carteVitale + ", cheque=" + cheque + ", espece="
-			+ espece + ", dureeCreneau=" + dureeCreneau + ", specialites=" + specialites + ", lieux=" + lieux + "]";
+	return "Praticien [id=" + id + ", version=" + version + ", civilite=" + civilite + ", Nom=" + Nom + ", prenom="
+			+ prenom + ", telephone=" + telephone + ", secteur=" + secteur + ", carteVitale=" + carteVitale
+			+ ", cheque=" + cheque + ", espece=" + espece + ", dureeCreneau=" + dureeCreneau + ", lieux=" + lieux
+			+ ", specialites=" + specialites + ", creneaux=" + creneaux + "]";
 }
-
 
 
 }
