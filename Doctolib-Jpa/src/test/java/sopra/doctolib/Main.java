@@ -25,6 +25,7 @@ import sopra.doctolib.repository.ISpecialite;
 import sopra.doctolib.repository.IUtilisateur;
 
 
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -105,6 +106,7 @@ public class Main {
 		philippe.setSpecialites(spePhilippe);
 		
 		
+		spring.close();
 	}
 
 }
