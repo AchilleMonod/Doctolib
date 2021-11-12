@@ -12,6 +12,8 @@ import sopra.doctolib.model.Civilite;
 import sopra.doctolib.model.Patient;
 import sopra.doctolib.model.Praticien;
 import sopra.doctolib.model.Specialite;
+import sopra.doctolib.model.Type;
+import sopra.doctolib.model.Utilisateur;
 import sopra.doctolib.repository.IAdresse;
 import sopra.doctolib.repository.IConsultation;
 import sopra.doctolib.repository.ICreneau;
@@ -21,7 +23,6 @@ import sopra.doctolib.repository.IPatient;
 import sopra.doctolib.repository.IPraticien;
 import sopra.doctolib.repository.ISpecialite;
 import sopra.doctolib.repository.IUtilisateur;
-import sopra.formation.config.ApplicationConfig;
 
 
 public class Main {
@@ -43,6 +44,7 @@ public class Main {
 		IUtilisateur utilisateurRepo = spring.getBean(IUtilisateur.class);
 
 		
+		
 
 		Patient michel = new Patient(); 
 		michel.setCivilite(Civilite.MME);
@@ -50,7 +52,7 @@ public class Main {
 		michel.setPrenom("Michel");
 		michel.setTelephone("0606060606");
 		michel.setDtNaissance(sdf.parse("12/12/1980"));
-		michel.setEmail("michel.bilal@bean.fr");
+		
 
 		Patient odil = new Patient();
 		odil.setCivilite(Civilite.MME);
@@ -58,7 +60,16 @@ public class Main {
 		odil.setPrenom("Odil");
 		odil.setTelephone("0612121212");
 		odil.setDtNaissance(sdf.parse("01/04/1968"));
-		odil.setEmail("odil.deraie@bean.fr");
+		
+		List<Patient> patientsMich = new ArrayList<Patient>();
+		patientsMich.add(michel);
+		patientsMich.add(odil);		
+		
+		Utilisateur michelUser = new Utilisateur();
+		michelUser.setEmail("michel.bilal@bean.fr");
+		michelUser.setMotDePasse("jadoreDaniel");
+		michelUser.setType(Type.PATIENT);
+		michelUser.setPatients(patientsMich);
 		
 		Adresse adrPhilippe1 = new Adresse();
 
@@ -69,10 +80,10 @@ public class Main {
 		
 		Adresse adrPhilippe2 = new Adresse();
 
-		adrPhilippe2.setVoie("5 avenue du grand rond");
-		adrPhilippe2.setComplement("Résidence Jevousoigne");
-		adrPhilippe2.setCodePostal("Un milliard");
-		adrPhilippe2.setVille("Medicatown");
+		adrPhilippe2.setVoie("15 rue des poules");
+		adrPhilippe2.setComplement("Hopital Iban");
+		adrPhilippe2.setCodePostal("78400");
+		adrPhilippe2.setVille("Pansement-City");
 		
 		Specialite coloscopeur = new Specialite();
 		coloscopeur.setNom("coloscopeur");
