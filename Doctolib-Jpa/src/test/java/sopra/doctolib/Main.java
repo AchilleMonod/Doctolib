@@ -1,9 +1,26 @@
 package sopra.doctolib;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import sopra.doctolib.config.AppConfig;
+import sopra.doctolib.model.Adresse;
+import sopra.doctolib.model.Civilite;
+import sopra.doctolib.model.Patient;
+import sopra.doctolib.model.Praticien;
+import sopra.doctolib.model.Specialite;
+import sopra.doctolib.repository.IAdresse;
+import sopra.doctolib.repository.IConsultation;
+import sopra.doctolib.repository.ICreneau;
+import sopra.doctolib.repository.ILieu;
+import sopra.doctolib.repository.IMotif;
+import sopra.doctolib.repository.IPatient;
+import sopra.doctolib.repository.IPraticien;
+import sopra.doctolib.repository.ISpecialite;
+import sopra.doctolib.repository.IUtilisateur;
 import sopra.formation.config.ApplicationConfig;
 
 
@@ -11,14 +28,21 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		AnnotationConfigApplicationContext spring = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+		AnnotationConfigApplicationContext spring = new AnnotationConfigApplicationContext(AppConfig.class);
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-		IPraticienRepository praticienRepo = spring.getBean(IPraticienRepository.class);
-		IPatientRepository patientRepo = spring.getBean(IPatientRepository.class);
-		IAdresseRepository adresseRepo = spring.getBean(IAdresseRepository.class);
-		ICreneauRepository creneauRepo = spring.getBean(ICreneauRepository.class);
+		IAdresse adresseRepo = spring.getBean(IAdresse.class);
+		IConsultation consultationRepo = spring.getBean(IConsultation.class);
+		ICreneau creneauRepo = spring.getBean(ICreneau.class);
+		ILieu lieuRepo = spring.getBean(ILieu.class);
+		IMotif motifRepo = spring.getBean(IMotif.class);
+		IPatient patientRepo = spring.getBean(IPatient.class);
+		IPraticien praticienRepo = spring.getBean(IPraticien.class);
+		ISpecialite specialiteRepo = spring.getBean(ISpecialite.class);
+		IUtilisateur utilisateurRepo = spring.getBean(IUtilisateur.class);
+
+		
 
 		Patient michel = new Patient(); 
 		michel.setCivilite(Civilite.MME);
@@ -36,13 +60,28 @@ public class Main {
 		odil.setDtNaissance(sdf.parse("01/04/1968"));
 		odil.setEmail("odil.deraie@bean.fr");
 		
-		
-		Adresse adrPhilippe = new Adresse();
+		Adresse adrPhilippe1 = new Adresse();
 
-		adrPhilippe.setVoie("5 avenue du grand rond");
-		adrPhilippe.setComplement("Résidence Jevousoigne");
-		adrPhilippe.setCodePostal("Un milliard");
-		adrPhilippe.setVille("Medicatown");
+		adrPhilippe1.setVoie("5 avenue du grand rond");
+		adrPhilippe1.setComplement("Résidence Jevousoigne");
+		adrPhilippe1.setCodePostal("Un milliard");
+		adrPhilippe1.setVille("Medicatown");
+		
+		Adresse adrPhilippe2 = new Adresse();
+
+		adrPhilippe2.setVoie("5 avenue du grand rond");
+		adrPhilippe2.setComplement("Résidence Jevousoigne");
+		adrPhilippe2.setCodePostal("Un milliard");
+		adrPhilippe2.setVille("Medicatown");
+		
+		Specialite coloscopeur = new Specialite();
+		coloscopeur.setNom("coloscopeur");
+		
+		Specialite oncologue = new Specialite();
+		oncologue.setNom("oncologue");
+		
+		List<Specialite> spePhilippe = new ArrayList();
+		
 		
 		
 		Praticien philippe = new Praticien();
@@ -51,8 +90,10 @@ public class Main {
 		philippe.setPrenom("Philippe");
 		philippe.setTelephone("0612345678");
 		philippe.setEmail("michel.bilal@chibre.fr");
-		philippe.setAdresse(adrPhilippe);
-
+		philippe.setDureeCreneau(15);
+		philippe.setSpecialites(spePhilippe);
+		
+		
 	}
 
 }
