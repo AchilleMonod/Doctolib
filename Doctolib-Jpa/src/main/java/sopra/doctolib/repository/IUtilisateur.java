@@ -2,8 +2,8 @@ package sopra.doctolib.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import sopra.doctolib.model.Lieu;
+import sopra.doctolib.config.Utilisateur;
 
-public interface IUtilisateur extends JpaRepository<Lieu, Long> {
+public interface IUtilisateur extends JpaRepository<Utilisateur, Long> {
 
 }

@@ -2,8 +2,8 @@ package sopra.doctolib.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import sopra.doctolib.model.Lieu;
+import sopra.doctolib.model.Specialite;
 
-public interface ISpecialite extends JpaRepository<Lieu, Long> {
+public interface ISpecialite extends JpaRepository<Specialite, Long> {
 
 }
