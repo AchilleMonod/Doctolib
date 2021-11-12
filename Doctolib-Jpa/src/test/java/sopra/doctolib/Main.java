@@ -1,6 +1,7 @@
 package sopra.doctolib;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import sopra.doctolib.config.AppConfig;
 import sopra.doctolib.model.Adresse;
 import sopra.doctolib.model.Civilite;
+import sopra.doctolib.model.Consultation;
+import sopra.doctolib.model.Creneau;
 import sopra.doctolib.model.Lieu;
+import sopra.doctolib.model.Motif;
 import sopra.doctolib.model.Patient;
 import sopra.doctolib.model.Praticien;
 import sopra.doctolib.model.Specialite;
@@ -119,6 +123,33 @@ public class Main {
 		hopitalIban.setNom("Résidence Jevousoigne");
 		hopitalIban.setPraticien(philippe);
 		
+		Motif motif1 = new Motif();
+		motif1.setConsultations(null);
+		motif1.setNbCreneau(3);
+		motif1.setNom("Cancer du cul");
+		motif1.setSpecialite(oncologue);
+		
+		
+		
+		
+		Creneau creneau = new Creneau();
+		creneau.setDebut(LocalDateTime.now());
+		creneau.setDuree(3);
+		creneau.setDispo(true);
+		creneau.setLieu(hopitalIban);
+		creneau.setPraticien(philippe);
+		
+
+		List<Creneau> creneaux = new ArrayList<Creneau>();
+		creneaux.add(creneau);
+		
+		Consultation consult1 = new Consultation();
+		consult1.setCreneaux(creneaux);
+		consult1.setMotif(motif1);
+		consult1.setPatient(michel);
+		
+		List<Consultation> consultPhilippe = new ArrayList<Consultation>();
+		consultPhilippe.add(consult1);
 		
 		
 		spring.close();
